@@ -20,4 +20,5 @@ jobs:
         DOTNET_NUGET_SIGNATURE_VALIDATION: false
         NUGET_CERT_REVOCATION_MODE: offline
       run: |
-        /home/os-joan.chen/.dotnet/dotnet publish -c Release -o /home/os-joan.chen/app-backend/api-site
+        /home/os-joan.chen/.dotnet/dotnet restore --ignore-failed-sources
+        /home/os-joan.chen/.dotnet/dotnet publish -c Release -o /home/os-joan.chen/app-backend/api-site --no-restore
