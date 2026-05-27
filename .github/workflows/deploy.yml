@@ -12,6 +12,6 @@ jobs:
     - name: 1. Fetch latest code from Git
       uses: actions/checkout@v4
 
-    - name: 2. Publish and deploy to Linux folder
+    - name: 2. Publish and deploy using local dotnet
       run: |
-        dotnet publish -c Release -o /home/os-joan.chen/app-backend/api-site
+        /home/os-joan.chen/.dotnet/dotnet publish -c Release -o /home/os-joan.chen/app-backend/api-site
