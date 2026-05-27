@@ -14,5 +14,16 @@ jobs:
 
     - name: 2. Publish and deploy using local dotnet
       run: |
-        echo '<?xml version="1.0" encoding="utf-8"?><configuration><config><add key="signatureValidationMode" value="accept" /></config></configuration>' > nuget.config
+        # Generate full nuget.config with both signature bypass and nuget.org source URL
+        echo '<?xml version="1.0" encoding="utf-8"?>
+        <configuration>
+          <packageSources>
+            <add key="nuget.org" value="https://api.nuget.org/v3/index.json" protocolVersion="3" />
+          </packageSources>
+          <config>
+            <add key="signatureValidationMode" value="accept" />
+          </config>
+        </configuration>' > nuget.config
+        
+        # Run publish with the complete config file
         /home/os-joan.chen/.dotnet/dotnet publish -c Release -o /home/os-joan.chen/app-backend/api-site --configfile nuget.config
