@@ -13,17 +13,8 @@ jobs:
       uses: actions/checkout@v4
 
     - name: 2. Publish and deploy using local dotnet
+      env:
+        DOTNET_NUGET_SIGNATURE_VALIDATION: false
       run: |
-        # Generate full nuget.config with both signature bypass and nuget.org source URL
-        echo '<?xml version="1.0" encoding="utf-8"?>
-        <configuration>
-          <packageSources>
-            <add key="nuget.org" value="https://api.nuget.org/v3/index.json" protocolVersion="3" />
-          </packageSources>
-          <config>
-            <add key="signatureValidationMode" value="accept" />
-          </config>
-        </configuration>' > nuget.config
-        
-        # Run publish with the complete config file
-        /home/os-joan.chen/.dotnet/dotnet publish -c Release -o /home/os-joan.chen/app-backend/api-site --configfile nuget.config
+        # ใช้ dotnet ตัวใหม่ที่เราเพิ่งติดตั้ง สั่งเคลียร์และบิลด์โค้ดส่งไปที่โฟลเดอร์ api-site
+        /home/os-joan.chen/.dotnet/dotnet publish -c Release -o /home/os-joan.chen/app-backend/api-site
