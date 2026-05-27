@@ -12,11 +12,6 @@ jobs:
     - name: 1. Fetch latest code from Git
       uses: actions/checkout@v4
 
-    - name: 2. Setup .NET SDK 8.0
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: '8.0'
-
-    - name: 3. Publish and deploy to Linux folder
+    - name: 2. Publish and deploy to Linux folder
       run: |
         dotnet publish -c Release -o /home/os-joan.chen/app-backend/api-site
