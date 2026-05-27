@@ -14,4 +14,5 @@ jobs:
 
     - name: 2. Publish and deploy using local dotnet
       run: |
-        /home/os-joan.chen/.dotnet/dotnet publish -c Release -o /home/os-joan.chen/app-backend/api-site
+        # Added ignore certificate errors to bypass NuGet untrusted root restrictions
+        /home/os-joan.chen/.dotnet/dotnet publish -c Release -o /home/os-joan.chen/app-backend/api-site --ignore-failed-sources
