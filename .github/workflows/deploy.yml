@@ -12,13 +12,9 @@ jobs:
     - name: 1. Fetch latest code from Git
       uses: actions/checkout@v4
 
-    - name: 2. Update CA trust (RHEL/CentOS)
-      run: sudo update-ca-trust
-
-    - name: 3. Publish and deploy using local dotnet
+    - name: 2. Publish and deploy using local dotnet
       env:
         DOTNET_NUGET_SIGNATURE_VALIDATION: false
         NUGET_CERT_REVOCATION_MODE: offline
       run: |
-        /home/os-joan.chen/.dotnet/dotnet restore --ignore-failed-sources
-        /home/os-joan.chen/.dotnet/dotnet publish -c Release -o /home/os-joan.chen/app-backend/api-site --no-restore
+        /home/os-joan.chen/.dotnet/dotnet publish -c Release -o /home/os-joan.chen/app-backend/api-site
